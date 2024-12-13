@@ -87,7 +87,7 @@ export default function IncidentReport() {
       const updatedReports = [...incidentReports];
       updatedReports[index].status = "Ongoing"; 
       setIncidentReports(updatedReports);
-      alert(`Report ${incidentReports[index].reportNumber} sent to: ${selectedDepartment}`);
+      alert(`Report ${incidentReports[index].id} sent to: ${selectedDepartment}`);
     }
   };
 
@@ -258,7 +258,7 @@ export default function IncidentReport() {
           <div className="overflow-y-scroll flex-grow" style={{ maxHeight: '600px' }}>
             {filteredReports.length > 0 ? (
               filteredReports.map((report, index) => (
-                <div key={report.reportNumber} className={`border border-blue-300 p-4 mb-4 rounded shadow hover:shadow-lg transition-shadow duration-200 flex justify-between items-start ${theme === 'dark' ? 'bg-gray-700' : ''}`}>
+                <div key={report.id} className={`border border-blue-300 p-4 mb-4 rounded shadow hover:shadow-lg transition-shadow duration-200 flex justify-between items-start ${theme === 'dark' ? 'bg-gray-700' : ''}`}>
                   <div className="flex flex-col">
                     <img 
                       src={report.image} 
@@ -266,8 +266,7 @@ export default function IncidentReport() {
                       className="w-20 h-20 object-cover cursor-pointer rounded" 
                       onClick={() => handleImageClick(report.image)} 
                     />
-                    <p className="mt-1 font-semibold text-sm">Report Number: {report.reportNumber}</p>
-                    <p className="text-xs">Name: {report.name}</p>
+                    <p className="mt-1 font-semibold text-sm">Report Number: {report.id}</p>
                     <p className="text-xs">Location: {report.location}</p>
                     <p className="text-xs">Date & Time: {report.dateTime}</p>
                     <p className="text-xs">Description: {report.description}</p>
